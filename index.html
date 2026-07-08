@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Workflow Assistant for Service Teams</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Workspace navigation">
+        <div class="brand">
+          <span class="brand-mark">AI</span>
+          <div>
+            <strong>OpsPilot</strong>
+            <span>workflow assistant</span>
+          </div>
+        </div>
+        <nav class="nav-list">
+          <button class="nav-item active" type="button">Inbox</button>
+          <button class="nav-item" type="button">Drafts</button>
+          <button class="nav-item" type="button">Automations</button>
+          <button class="nav-item" type="button">Reports</button>
+        </nav>
+        <div class="side-card">
+          <span class="eyebrow">Today</span>
+          <strong id="sidebarResolved">0 workflows ready</strong>
+          <p>Prioritize inbound work, create a response draft, and hand off next actions.</p>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Sample AI operations tool</p>
+            <h1>Turn messy client requests into clean workflows</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" id="exportQueue" type="button">Export queue</button>
+            <button class="primary-button" id="generateHandoff" type="button">Generate handoff</button>
+          </div>
+        </header>
+
+        <section class="metrics-grid" aria-label="Workflow summary">
+          <article class="metric">
+            <span>Open requests</span>
+            <strong id="metricOpen">0</strong>
+          </article>
+          <article class="metric">
+            <span>High priority</span>
+            <strong id="metricHigh">0</strong>
+          </article>
+          <article class="metric">
+            <span>Drafts ready</span>
+            <strong id="metricDrafts">0</strong>
+          </article>
+          <article class="metric">
+            <span>Automation value</span>
+            <strong id="metricValue">$0</strong>
+          </article>
+        </section>
+
+        <section class="tool-grid">
+          <div class="panel queue-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Inbound queue</p>
+                <h2>Requests to triage</h2>
+              </div>
+              <select id="queueFilter" aria-label="Filter requests">
+                <option value="all">All requests</option>
+                <option value="high">High priority</option>
+                <option value="lead">Leads</option>
+                <option value="support">Support</option>
+                <option value="billing">Billing</option>
+              </select>
+            </div>
+            <div class="queue-list" id="queueList" aria-live="polite"></div>
+          </div>
+
+          <div class="panel detail-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Assistant output</p>
+                <h2 id="detailTitle">Select a request</h2>
+              </div>
+              <span class="status-pill" id="detailPriority">Ready</span>
+            </div>
+
+            <div class="analysis-grid">
+              <div class="analysis-card">
+                <span>Intent</span>
+                <strong id="intentValue">-</strong>
+              </div>
+              <div class="analysis-card">
+                <span>Sentiment</span>
+                <strong id="sentimentValue">-</strong>
+              </div>
+              <div class="analysis-card">
+                <span>SLA</span>
+                <strong id="slaValue">-</strong>
+              </div>
+            </div>
+
+            <div class="request-body" id="requestBody"></div>
+
+            <div class="output-section">
+              <div class="section-title">
+                <h3>Client reply draft</h3>
+                <button class="small-button" id="copyDraft" type="button">Copy</button>
+              </div>
+              <textarea id="draftOutput" rows="8" aria-label="Generated client reply draft"></textarea>
+            </div>
+
+            <div class="output-section">
+              <div class="section-title">
+                <h3>Automation plan</h3>
+                <button class="small-button" id="markReady" type="button">Mark ready</button>
+              </div>
+              <ol class="plan-list" id="automationPlan"></ol>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel builder-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Workflow builder</p>
+              <h2>Test a new client message</h2>
+            </div>
+          </div>
+          <form class="builder-form" id="messageForm">
+            <label>
+              Client
+              <input id="clientInput" name="client" type="text" value="Northstar Dental" required>
+            </label>
+            <label>
+              Channel
+              <select id="channelInput" name="channel">
+                <option>Email</option>
+                <option>Website form</option>
+                <option>Slack</option>
+                <option>Upwork message</option>
+              </select>
+            </label>
+            <label class="wide-field">
+              Message
+              <textarea id="messageInput" name="message" rows="5" required>We need a simple dashboard that pulls appointment CSV files, flags missed follow-ups, and sends a weekly summary to the office manager.</textarea>
+            </label>
+            <button class="primary-button" type="submit">Analyze message</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <template id="queueItemTemplate">
+      <button class="queue-item" type="button">
+        <span class="queue-topline">
+          <strong class="queue-client"></strong>
+          <span class="queue-priority"></span>
+        </span>
+        <span class="queue-subject"></span>
+        <span class="queue-meta"></span>
+      </button>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

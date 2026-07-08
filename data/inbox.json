@@ -1,0 +1,47 @@
+[
+  {
+    "id": "req-101",
+    "client": "Bright Ledger Co.",
+    "channel": "Email",
+    "subject": "Invoice reminders and payment follow-up",
+    "message": "Can you automate reminders for overdue invoices and give our team a weekly list of clients who still have not paid? We use Stripe exports and a shared Google Sheet.",
+    "value": 1800,
+    "received": "09:10"
+  },
+  {
+    "id": "req-102",
+    "client": "Northstar Dental",
+    "channel": "Website form",
+    "subject": "Appointment CSV dashboard",
+    "message": "We need a simple dashboard that pulls appointment CSV files, flags missed follow-ups, and sends a weekly summary to the office manager.",
+    "value": 2400,
+    "received": "09:42"
+  },
+  {
+    "id": "req-103",
+    "client": "Atlas Support Desk",
+    "channel": "Slack",
+    "subject": "Ticket triage backlog",
+    "message": "Our support queue is getting noisy. We want requests tagged by urgency, billing, login problems, and feature requests before an agent touches them.",
+    "value": 3200,
+    "received": "10:05"
+  },
+  {
+    "id": "req-104",
+    "client": "Mason Creative",
+    "channel": "Upwork message",
+    "subject": "CRM lead qualification",
+    "message": "Can you help us score new leads, draft the first reply, and route qualified prospects to HubSpot? We mostly get web form submissions.",
+    "value": 2100,
+    "received": "10:34"
+  },
+  {
+    "id": "req-105",
+    "client": "Harbor Logistics",
+    "channel": "Email",
+    "subject": "Operations report cleanup",
+    "message": "Every Friday we combine CSV files from three vendors and manually write a summary. We want a cleaner report with exceptions and next actions.",
+    "value": 2800,
+    "received": "11:18"
+  }
+]
