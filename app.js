@@ -161,7 +161,7 @@ function renderMetrics() {
   elements.metricHigh.textContent = highCount;
   elements.metricDrafts.textContent = state.requests.length;
   elements.metricValue.textContent = formatCurrency(totalValue);
-  elements.sidebarResolved.textContent = `${state.ready.size} workflows ready`;
+  elements.sidebarResolved.textContent = `${state.requests.length} drafts ready`;
 }
 
 function renderQueue() {
